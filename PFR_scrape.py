@@ -6,91 +6,83 @@ Module goes to www.pro-football-reference.com/ to:
 '''
 
 import requests
-import time
-import random
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
-from IPython.core.display import display, HTML
-from collections import defaultdict
+import time
+import random
+import pandas as pd
 
-base_url = 'https://www.pro-football-reference.com/'
-# scrape Jared Goff first. to be replaced by a generated list
-test_player = 'players/G/GoffJa00.htm'
+base_url = 'https://www.pro-football-reference.com/players/'
 
-def agent_scramble():
+def get_player_htm():
     '''
-    Mask user-agent
+    Use name to get name for player's html page identifier
+    return:
+        dict of {player_page_htm_label : player_name}
+    '''
+    qb_list_file = './pfr_scraped/master_qb_list.csv'
+    qb_df = pd.read_csv(qb_list_file, index_col=0)
+
+    qb_df = qb_df['0'].str.split(expand=True).copy()
+    qb_df[2] = qb_df[0] + ' ' + qb_df[1]
+    qb_df.rename({0:'First', 1:'Last', 2:'Full'}, axis=1, inplace=True)
+    qb_df['htm_name'] = qb_df['Last'].str.slice(stop=4) + qb_df['First'].str.slice(stop=2)
+    htm_name_dict = dict(zip(qb_df['htm_name'], qb_df['Full']))
+    return htm_name_dict
+
+def scrape_page(htm_dict):
+    '''
+    Scrape page and store in a list of soup files
+    arg:
+        list of qb's name as html identifier
+    return:
+        list of players pages in soup form
     '''
     ua = UserAgent()
     user_agent = {'User-agent' : ua.random}
-    return user_agent
+    player_page_soups = []
+    error_list = []
 
-def scrape_page(player):
+    for qb_htm, qb_name in htm_dict.items():
+        for x in range(6):
+            # iterate player to page mismatch
+            # e.g. BradSa00.htm might be Sage Brady instead of Sam Bradford so check BradSa0x.htm
+            name = qb_htm + '0' + str(x) + '.htm'
+            add_url = qb_htm[0] + '/' + name
+            response = requests.get(base_url + add_url, headers=user_agent)
+            if response.status_code == 200:
+                print(str(response.status_code) + add_url)
+                page_soup = BeautifulSoup(response.text, 'lxml')
+                page_name = page_soup.find('h1',{'itemprop':'name'}).text
+                if page_name != qb_name:
+                    # If there's a mismatch iterate for next x
+                    time.sleep(random.random() + random.randint(1,4))
+                    continue
+                else:
+                    break
+            else:
+                # Something was actually wrong with this but function ended up grabbing all the data I needed anyway
+                print('Something\'s wrong with:' + add_url)
+                error_list.append(qb_name)
+                break
+        player_page_soups.append(page_soup)
+        time.sleep(random.random() + random.randint(1,4))
+    return player_page_soups
+
+def save_scrape_page(soup_list):
     '''
-    Scrape all stats from a player's page
+    Save list of soups to text file to avoid scraping again
     arg:
-        player = name as it appears on pro-football-reference in string format
-    return:
-        Player's information and stat as BS object
+        list of pages scraped in soup form
     '''
-    response = requests.get(base_url + player, headers=agent_scramble())
-    page_soup = BeautifulSoup(response.text, 'lxml')
-    big_table = page_soup.find_all('table', {'id':'passing'})
-    return big_table
+    qb_soup_list = [k.prettify() for k in soup_list]
+    # key word BREAKHERE is splitter between soups
+    list_with_breaks = [m+'BREAKHERE' for m in qb_soup_list]
+    compiled_list = "".join(list_with_breaks)
+    with open('./pfr_scraped/qb_soup_list.txt', 'w') as file:
+        file.write(compiled_list)
 
-def get_headers(table):
-    '''
-    Grab stat headers from player's BS table
-    arg:
-        BS object containing players info (from scrape_page)
-    return:
-        stat labels in a list
-    '''
-    stat_header = []
 
-    stat_table = table[0].find_all('tr')
-    header_soup = stat_table[0].find_all('th')
-    for header in header_soup:
-        stat_header.append(header.text)
-    return stat_header
-
-def get_stats(table):
-    '''
-    Store player stats in dictionary
-    arg:
-        BS table created from scrape_page
-    return:
-        Dictionary in {year : stats} format
-    '''
-    stats = defaultdict(list)
-    for ele in table:
-        if not ele.find('a'):
-            continue
-        year = ele.find('a').text
-        temp_stat = ele.find_all('td')
-        for num in temp_stat:
-            stats[year].append(num.text)
-    return stats
-
-def create_player_dict(player, stat_dict):
-    ''' WORK IN PROGRESS
-    Create dict using player name and stats
-    arg:
-        TBD
-    return:
-        Dictionary for a single QB in form {name : stats}
-    '''
-    player_dict = {}
-    TEST_SOUP = scrape_page(test_player)
-    headers = get_headers(TEST_SOUP)
-    pass
-
-def create_player_csv(player_stat):
-    csv_file = 'player_name.csv'
-    with open(csv_file, 'w') as csvfile:
-        csvfile.write(','.join(headers) + '\n')
-        for key, value in stats.items():
-            csvfile.write(key + ',' + ','.join(value) + '\n')
-
-if __name__ == 'main':
-    pass
+if __name__ == '__main__':
+    htm_name_dict = get_player_htm()
+    player_page_soups = scrape_page(htm_name_dict)
