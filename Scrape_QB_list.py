@@ -1,3 +1,8 @@
+'''
+Compile list of active quarterbacks between 2010 - 2019
+'''
+
+
 import requests
 import time, os
 import random

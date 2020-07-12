@@ -150,4 +150,3 @@ if __name__ == '__main__':
     htm_name_dict = get_player_htm()
     player_page_soups = scrape_page(htm_name_dict)
     create_raw_stat_df(player_page_soups)
-    
