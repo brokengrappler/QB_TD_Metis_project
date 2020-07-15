@@ -1,5 +1,5 @@
 '''
-Compile list of active quarterbacks between 2010 - 2019
+Compile list of active quarterbacks (default was 2010-2019)
 '''
 
 
@@ -19,7 +19,7 @@ def qb_soup_scraper():
     '''
     base_url = 'https://www.pro-football-reference.com/years/'
     html = '/passing.htm'
-    years_list = list(map(str, [x for x in range(2010, 2019)]))
+    years_list = list(map(str, [x for x in range(1998, 2009)]))
     ua = UserAgent()
     user_agent = {'User-agent': ua.random}
 
@@ -92,7 +92,7 @@ def raw_scrape(soup_list):
     return qb_master_list
 
 def write_list_to_file(master_list):
-    csv_file = './pfr_scraped/master_qb_list.csv'
+    csv_file = './pfr_scraped/added_qb_list.csv'
     qb_list_series = pd.Series(master_list)
     qb_list_series.to_csv(csv_file)
 

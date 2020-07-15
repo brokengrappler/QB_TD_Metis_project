@@ -1,8 +1,8 @@
 '''
 Module goes to www.pro-football-reference.com/ to:
-1) Find list of QBs
+1) Imports list of QBs
 2) Grab stats for those QBs and puts it in a dictionary form {name : stats}
-3) Writes the stats to a... csv?
+3) Writes the stats to a df
 '''
 
 import requests
@@ -13,23 +13,38 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 import pandas as pd
 
+# Web url and path where scraped qb_list is stored
 base_url = 'https://www.pro-football-reference.com/players/'
+path = '/Users/paulchung/Dropbox (Personal)/Paul Working Folder/Home/Coding/Metis/github_backup/Project-2-Regression/'
 
-def get_player_htm():
+def add_players():
+    '''
+    Merges list of QBs to return only unique ones for when addtional QBs are added for analysis
+    return:
+        Dataframe of QBs to be added
+    '''
+    qb_list_file = './pfr_scraped/master_qb_list.csv'
+    qb_list_file2 = './pfr_scraped/added_qb_list.csv'
+    qb_df = pd.read_csv(qb_list_file, index_col=0)
+    qb_df2 = pd.read_csv(qb_list_file2, index_col=0)
+    qb_df3 = qb_df2.merge(qb_df, how='left', indicator=True)
+    qb_df3 = qb_df3[qb_df3['_merge'] == 'left_only']
+    qb_df3.drop('_merge', axis=1, inplace=True)
+    return qb_df3
+
+def get_player_htm(df):
     '''
     Use name to get name for player's html page identifier
     return:
         dict of {first_part_htm_names : player_name}
     '''
-    qb_list_file = './pfr_scraped/master_qb_list.csv'
-    qb_df = pd.read_csv(qb_list_file, index_col=0)
     htm_name_dict = {}
 
-    qb_df = qb_df['0'].str.split(n=1, expand=True).copy()
-    qb_df[2] = qb_df[0] + ' ' + qb_df[1]
-    qb_df.rename({0:'First', 1:'Last', 2:'Full'}, axis=1, inplace=True)
-    qb_df['htm_name'] = qb_df['Last'].str.slice(stop=4) + qb_df['First'].str.slice(stop=2)
-    htm_name_dict = dict(zip(qb_df['htm_name'], qb_df['Full']))
+    df = df['0'].str.split(n=1, expand=True).copy()
+    df[2] = df[0] + ' ' + df[1]
+    df.rename({0:'First', 1:'Last', 2:'Full'}, axis=1, inplace=True)
+    df['htm_name'] = df['Last'].str.slice(stop=4) + df['First'].str.slice(stop=2)
+    htm_name_dict = dict(zip(df['htm_name'], df['Full']))
     return htm_name_dict
 
 def scrape_page(htm_dict):
@@ -83,6 +98,13 @@ def get_player_data(soup):
     return name, big_table
 
 def get_stats(player_data):
+    '''
+    Grab stats from player's BS table
+    arg:
+        BS object containing players info (from scrape_page)
+    return:
+        List containing [player_name(str), {year: stats}]
+    '''
     name = player_data[0]
     stat_table = player_data[1]
     annual_stat_dict = defaultdict(list)
@@ -116,7 +138,15 @@ def get_headers(player_data):
         stat_header.append(header.text.strip())
     return stat_header
 
-def create_player_df(stats_for_df):
+def create_player_df(stats_for_df, headers):
+    '''
+    Reorganizes information from get_stats in format ready for pandas df
+    arg:
+        1) List of name and dict of stats from get_stats function;
+        2) list of stat labels from get_headers
+    return:
+        Player's stats in pandas df
+    '''
     agg_stat_list = []
 
     for key, value in stats_for_df[1].items():
@@ -129,8 +159,22 @@ def create_player_df(stats_for_df):
     player_df = pd.DataFrame(agg_stat_list,columns=headers)
     return player_df
 
-def create_raw_stat_df(player_page_soups, pkl=False):
+
+def create_raw_stat_df(player_page_soups, pkl):
+    '''
+    Creates 2 pickle files to save players data extracted. 2 dfs to account for players with 32 stats (old)
+    vs 33 (current). Functions include, for each player page:
+    1) extracting stat headers
+    2) extracting raw stats
+    3) create player stat to append to master df
+    arg:
+        1) list of BS;
+        2) pkl = True to save pickle
+    :return:
+        list of players with errors
+    '''
     master_raw_df = pd.DataFrame()
+    old_headers_df = pd.DataFrame()
     error_list = []
     for player_soup in player_page_soups:
         player_data = get_player_data(player_soup)
@@ -141,12 +185,18 @@ def create_raw_stat_df(player_page_soups, pkl=False):
             headers = get_headers(player_data)
             player_stats = get_stats(player_data)
             player_df = create_player_df(player_stats, headers)
-        master_raw_df = master_raw_df.append(player_df)
-        if pkl:
-            master_raw_df.to_pickle('./Pickles/master_raw_df.pkl')
-    return master_raw_df, error_list
+        if len(headers) > 32:
+            master_raw_df = master_raw_df.append(player_df)
+        else:
+            old_headers_df = old_headers_df.append(player_df)
+    if pkl:
+        master_raw_df.to_pickle(path + '/Pickles/added_players_df.pkl')
+        old_headers_df.to_pickle(path + '/Pickles/old_players_df.pkl')
+    return error_list
 
 if __name__ == '__main__':
-    htm_name_dict = get_player_htm()
+    added_qbs_df = add_players()
+    htm_name_dict = get_player_htm(added_qbs_df)
     player_page_soups = scrape_page(htm_name_dict)
-    create_raw_stat_df(player_page_soups)
+    check = create_raw_stat_df(player_page_soups, True)
+    print(check[1])

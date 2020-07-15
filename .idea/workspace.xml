@@ -3,18 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dfe2f3a0-a1d4-4ad0-8ec3-07f880bba4b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Web_Scraping_ver1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Web_Scraping_ver1-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Create_QB_stat_DF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NFL_data_scratchEDA.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/PFR_scrape.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFR_scrape.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QB_Career_EDA.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrape_QB_List.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scrape_QB_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrape_QB_list.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_Scraping_ver1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/active_qb_df.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pfr_scraped/Goff_test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pfr_scraped/qb_soup_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pfr_scraped/qb_soup_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/QB_Career_EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/QB_Career_EDA.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/Web_Scraping_ver1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/Web_Scraping_ver1.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,9 +95,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1385" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594389551754">
-      <screen x="-1920" y="-18" width="1920" height="1057" />
+    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594791174046">
+      <screen x="0" y="23" width="1440" height="821" />
     </state>
+    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1594791174046" />
     <state x="-1385" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594321983139" />
     <state x="-1385" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.823@-1920.-18.1920.1057" timestamp="1594389551754" />
   </component>
