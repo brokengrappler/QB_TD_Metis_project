@@ -1,7 +1,9 @@
 # QB TD projection (Metis - Linear Regression project)
 
 #### Description 
-Create a linear regression model that will project TD passes to be thrown for starting QBs in a subsequent year.
+Create a linear regression model that will project TD passes to be thrown for starting QBs in a subsequent year. 
+
+Test set had a RMSE of #.
 
 #### Assignment requirements
 This project was selected to fulfill the requirements of building a linear regression model to demonstrate and implement knowledge of:
