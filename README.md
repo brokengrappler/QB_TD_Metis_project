@@ -3,7 +3,7 @@
 #### Description 
 Create a linear regression model that will project TD passes to be thrown for starting QBs in a subsequent year. 
 
-Test set (2019 TD projects on 2018 YTD stats input) had a $$R^2_$$ of 0.351.
+Test set (2019 TD projects on 2018 YTD stats input) had a R<sup>2</sup> of 0.351.
 
 #### Assignment requirements
 This project was selected to fulfill the requirements of building a linear regression model to demonstrate and implement knowledge of:
