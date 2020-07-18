@@ -15,12 +15,9 @@ This project was selected to fulfill the requirements of building a linear regre
 - [pro-football-reference.com](https://www.pro-football-reference.com/)
 
 #### File Contents
-- `Scrape_qb_list.py` Compile list of active quarterbacks between a specified number of years.
-- `PFR_scrape.py` Acquire data from pro-football-reference for QBs in the Scrape_qb_list and creates a pandas dataframe.
-
-- Files to be added later:
-1) Dataframe cleaning and filtering
-2) Linear regression model
+- `Scrape_qb_list.py` Compile list of active quarterbacks between a specified number of years. Data frame returned is used in PFR_scrape.py.
+- `PFR_scrape.py` Acquire data from pro-football-reference for QBs in the Scrape_qb_list and creates a pandas data frame. Data frame returned is used in QB_pred_model.py.
+- `QB_pred_model.py` 
 
 #### Dependencies
 - Python 3.6 (and above)
