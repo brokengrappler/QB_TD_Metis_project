@@ -15,7 +15,8 @@ import pandas as pd
 
 # Web url and path where scraped qb_list is stored
 base_url = 'https://www.pro-football-reference.com/players/'
-path = '/Users/paulchung/Dropbox (Personal)/Paul Working Folder/Home/Coding/Metis/github_backup/Project-2-Regression/'
+# path where qb list pickle created in Scrape_qb_list.py is located.
+path = './Project-2-Regression/'
 
 def add_players():
     '''

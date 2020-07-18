@@ -4,10 +4,12 @@
     <list default="true" id="dfe2f3a0-a1d4-4ad0-8ec3-07f880bba4b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PFR_scrape.py" beforeDir="false" afterPath="$PROJECT_DIR$/PFR_scrape.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrape_QB_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrape_QB_list.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_Career_EDA-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_TD_Regression-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_TD_Regression-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/2019_data_for_pred.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/2019_data_for_pred.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jpnb/QB_Career_EDA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/QB_Career_EDA.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jpnb/Web_Scraping_ver1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/Web_Scraping_ver1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/QB_TD_Regression.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/QB_TD_Regression.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jpnb/car_avg_stats_df.pkl" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +37,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../chi20_ds15/curriculum/project-02/ml-project-structure" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../chi20_ds15/curriculum/project-02/ml-project-structure" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Project-2-Regression" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -95,11 +103,43 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594791174046">
+    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595016248687">
       <screen x="0" y="23" width="1440" height="821" />
     </state>
-    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1594791174046" />
+    <state x="369" y="150" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1595016248687" />
     <state x="-1385" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594321983139" />
     <state x="-1385" y="145" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.-18.1920.1057/0.23.1440.823@-1920.-18.1920.1057" timestamp="1594389551754" />
+    <state width="1399" height="255" key="GridCell.Tab.0.bottom" timestamp="1594917339812">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.0.bottom/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339812" />
+    <state width="1399" height="255" key="GridCell.Tab.0.center" timestamp="1594917339810">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.0.center/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339810" />
+    <state width="1399" height="255" key="GridCell.Tab.0.left" timestamp="1594917339809">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.0.left/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339809" />
+    <state width="1399" height="255" key="GridCell.Tab.0.right" timestamp="1594917339811">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.0.right/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339811" />
+    <state width="1399" height="255" key="GridCell.Tab.1.bottom" timestamp="1594917339814">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.1.bottom/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339814" />
+    <state width="1399" height="255" key="GridCell.Tab.1.center" timestamp="1594917339813">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.1.center/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339813" />
+    <state width="1399" height="255" key="GridCell.Tab.1.left" timestamp="1594917339812">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.1.left/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339812" />
+    <state width="1399" height="255" key="GridCell.Tab.1.right" timestamp="1594917339813">
+      <screen x="-1920" y="-18" width="1920" height="1057" />
+    </state>
+    <state width="1399" height="255" key="GridCell.Tab.1.right/-1920.-18.1920.1057/0.23.1440.822@-1920.-18.1920.1057" timestamp="1594917339813" />
   </component>
 </project>
