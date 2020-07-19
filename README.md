@@ -23,7 +23,8 @@ This project was selected to fulfill the requirements of building a linear regre
 #### File Contents
 - `Scrape_qb_list.py` Compile list of active quarterbacks between a specified number of years. Data frame returned is used in PFR_scrape.py.
 - `PFR_scrape.py` Acquire data from pro-football-reference for QBs in the Scrape_qb_list and creates a pandas data frame. Data frame returned is used in QB_pred_model.py.
-- `QB_pred_model.py` Creates model and prints results of actual vs. predicted for 2019 (test set).
+- `QB_pred_model.py` Creates model and prints results of actual vs. predicted for 2019 (test set)
+`jpnb folder` Jupyter notebook folders containing charts and statistical summaries from EDA.
 
 #### Dependencies
 - Python 3.6 (and above)
