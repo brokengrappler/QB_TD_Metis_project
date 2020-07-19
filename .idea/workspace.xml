@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfe2f3a0-a1d4-4ad0-8ec3-07f880bba4b9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_TD_EDA-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpnb/QB_TD_EDA.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jpnb/result_graph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_TD_Regression-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/.ipynb_checkpoints/QB_TD_Regression-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jpnb/QB_TD_Regression.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/jpnb/QB_TD_Regression.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
